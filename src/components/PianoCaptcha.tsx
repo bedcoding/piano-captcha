@@ -67,7 +67,7 @@ export default function PianoCaptcha({ onSuccess, onFail, onClose }: PianoCaptch
 
     return (
       <div className={`result-message ${status}`}>
-        <p>{status === 'success' ? '캡챠 통과!' : '다시 시도해주세요'}</p>
+        <p>{status === 'success' ? '아직 정신이 멀쩡하신데요?' : '음주 코딩이 의심됩니다.'}</p>
         <div className="result-buttons">
           {status === 'success' && (
             <button onClick={onClose} className="close-btn">
