@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import NoteList from './NoteList'
 import Piano from './Piano'
 import './PianoCaptcha.css'
