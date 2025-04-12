@@ -1,42 +1,44 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* 전체 앱 컨테이너 */
+.app {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #ffffff;
+}
+
+/* 배경 컨텐츠 스타일 */
+.background-content {
+  padding: 20px;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* 플로팅 박스 스타일 */
+.floating-box {
+  position: fixed;  /* 화면에 고정 */
+  top: 50%;        /* 화면 중앙에 위치 */
+  left: 50%;
+  transform: translate(-50%, -50%);  /* 정중앙 정렬 */
+  width: 400px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  z-index: 1000;   /* 다른 요소들 위에 표시 */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.floating-header {
+  padding: 16px;
+  background: #f8f9fa;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom: 1px solid #e9ecef;
 }
 
-.card {
-  padding: 2em;
+.floating-header h2 {
+  margin: 0;
+  font-size: 18px;
+  color: #343a40;
 }
 
-.read-the-docs {
-  color: #888;
+.floating-content {
+  padding: 20px;
+  min-height: 200px;  /* 최소 높이 설정 */
 }

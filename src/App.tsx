@@ -1,34 +1,24 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import PianoCaptcha from './components/PianoCaptcha'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="app">
+      {/* 임시로 배경이 되는 컨텐츠 */}
+      <div className="background-content">
+        <h1>이 위에 피아노 캡챠가 뜹니다</h1>
+        <p>스크롤을 내려도 피아노 캡챠는 그대로 유지됩니다</p>
+        {Array.from({ length: 20 }).map((_, i) => (
+          <p key={i}>배경 컨텐츠 {i + 1}</p>
+        ))}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+
+      {/* 피아노 캡챠 */}
+      <PianoCaptcha 
+        onSuccess={() => alert('캡챠 통과!')} 
+        onFail={() => alert('다시 시도해주세요.')} 
+      />
+    </div>
   )
 }
 

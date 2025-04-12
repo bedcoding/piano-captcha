@@ -1,0 +1,27 @@
+.note-list {
+  background: #f8f9fa;
+  border-radius: 4px;
+  padding: 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.note-display {
+  min-height: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-start;
+  min-width: 100%;
+}
+
+.note {
+  background: #e9ecef;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #495057;
+  font-weight: 500;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+} 

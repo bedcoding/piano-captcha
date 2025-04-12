@@ -1,0 +1,46 @@
+.piano {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  padding: 12px;
+  background: #343a40;
+  border-radius: 4px;
+}
+
+.key {
+  width: 40px;
+  height: 120px;
+  border: 1px solid #dee2e6;
+  border-radius: 0 0 4px 4px;
+  background: white;
+  color: #343a40;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.1s ease;
+  
+  /* 텍스트 중앙 정렬 */
+  display: flex;
+  align-items: center;     /* 수직 중앙 정렬 */
+  justify-content: center; /* 수평 중앙 정렬 */
+}
+
+.key.white {
+  background: white;
+  color: #343a40;
+}
+
+.key.black {
+  background: #343a40;
+  color: white;
+  height: 80px;
+}
+
+.key:hover {
+  background: #f8f9fa;
+  transform: translateY(2px);
+}
+
+.key:active {
+  background: #e9ecef;
+  transform: translateY(4px);
+} 
