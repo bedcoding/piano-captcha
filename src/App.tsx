@@ -4,6 +4,7 @@ import './App.css'
 
 function App() {
   const [showCaptcha, setShowCaptcha] = useState(true);
+  console.log("===== 배포 테스트");
 
   // 캡챠 성공 시 처리
   const handleCaptchaSuccess = async () => {
