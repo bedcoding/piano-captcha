@@ -4,10 +4,12 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 400px;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  width: 560px;
+  display: flex;
+  justify-content: center;
 }
 
 .floating-header {
@@ -19,7 +21,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 24px;
+  width: 100%;
+  max-width: 480px;
 }
 
 .target-notes {
@@ -33,6 +37,7 @@
   border: 2px dashed #ccc;
   width: 100%;
   box-sizing: border-box;
+  white-space: nowrap;
 }
 
 .target-notes::before {
@@ -105,4 +110,54 @@
 
 .retry-btn:hover {
   background-color: #d32f2f;
+}
+
+.init-screen {
+  text-align: center;
+  padding: 20px 0;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.init-screen h2 {
+  font-size: 2em;
+  color: #333;
+  margin-bottom: 20px;
+  white-space: nowrap;
+}
+
+.init-screen p {
+  font-size: 1.2em;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.start-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2em;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.start-btn:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.start-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 } 

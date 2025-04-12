@@ -7,14 +7,12 @@ function App() {
 
   // 캡챠 성공 시 처리
   const handleCaptchaSuccess = async () => {
-    // 여기서 캡챠 성공 후의 추가 로직을 처리할 수 있습니다
-    console.log('캡챠 통과!');
+    console.log('캡챠 통과!');  // 여기서 캡챠 성공 후의 추가 로직을 처리할 수 있습니다
   };
 
   // 캡챠 실패 시 처리
   const handleCaptchaFail = async () => {
-    // 여기서 캡챠 실패 후의 추가 로직을 처리할 수 있습니다
-    console.log('캡챠 실패!');
+    console.log('캡챠 실패!');  // 여기서 캡챠 실패 후의 추가 로직을 처리할 수 있습니다
   };
 
   // 캡챠 닫기 처리
@@ -40,7 +38,7 @@ function App() {
             onClick={handleOpenCaptcha}
             className="open-captcha-btn"
           >
-            음주 테스트 시작하기 🎹
+            음주 여부 확인 🎹
           </button>
         )}
 

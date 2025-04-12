@@ -31,8 +31,8 @@
   transform: translate(-50%, -50%);  /* 정중앙 정렬 */
   width: 400px;
   background: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   z-index: 1000;   /* 다른 요소들 위에 표시 */
 }
 
@@ -51,8 +51,11 @@
 }
 
 .floating-content {
-  padding: 20px;
-  min-height: 200px;  /* 최소 높이 설정 */
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
 }
 
 .open-captcha-btn {

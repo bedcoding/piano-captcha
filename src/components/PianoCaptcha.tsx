@@ -12,7 +12,7 @@ interface PianoCaptchaProps {
 export default function PianoCaptcha({ onSuccess, onFail, onClose }: PianoCaptchaProps) {
   const [notes, setNotes] = useState<string[]>([])  // 현재까지 입력된 음표들
   const [targetNotes, setTargetNotes] = useState<string[]>([])  // 맞춰야 할 음표들
-  const [status, setStatus] = useState<'playing' | 'success' | 'fail'>('playing')  // 현재 상태
+  const [status, setStatus] = useState<'init' | 'playing' | 'success' | 'fail'>('init')  // 현재 상태
 
   // 새로운 목표 음표를 생성하는 함수
   const generateNewTarget = () => {
@@ -22,17 +22,18 @@ export default function PianoCaptcha({ onSuccess, onFail, onClose }: PianoCaptch
     setTargetNotes(randomNotes);
   };
 
+  // 게임 시작 함수
+  const startGame = () => {
+    generateNewTarget();
+    setStatus('playing');
+  };
+
   // 게임 초기화 함수
   const resetGame = () => {
     setNotes([]);
     generateNewTarget();
     setStatus('playing');
   };
-
-  // 컴포넌트가 처음 마운트될 때 목표 음표들을 생성
-  useEffect(() => {
-    generateNewTarget();
-  }, []);
 
   // 건반이 눌렸을 때 처리하는 함수
   const handleKeyPress = (note: string) => {
@@ -56,43 +57,52 @@ export default function PianoCaptcha({ onSuccess, onFail, onClose }: PianoCaptch
   };
 
   // 결과 메시지와 버튼 렌더링
-  const renderResult = () => {
-    if (status === 'playing') {
+  const renderContent = () => {
+    if (status === 'init') {
       return (
-        <div className="target-notes">
-          맞춰야 할 음표: {targetNotes.join(' ')}
+        <div className="init-screen">
+          <h2>음주 테스트</h2>
+          <p>화면에 표시되는 음표 순서대로<br />피아노 건반을 눌러주세요</p>
+          <button onClick={startGame} className="start-btn">
+            시작하기
+          </button>
         </div>
       );
     }
 
     return (
-      <div className={`result-message ${status}`}>
-        <p>{status === 'success' ? '아직 정신이 멀쩡하신데요?' : '음주 코딩이 의심됩니다.'}</p>
-        <div className="result-buttons">
-          {status === 'success' && (
-            <button onClick={onClose} className="close-btn">
-              확인
-            </button>
-          )}
-          {status === 'fail' && (
-            <button onClick={resetGame} className="retry-btn">
-              재시도
-            </button>
-          )}
-        </div>
-      </div>
+      <>
+        {status === 'playing' ? (
+          <div className="target-notes">
+            맞춰야 할 음표: {targetNotes.join(' ')}
+          </div>
+        ) : (
+          <div className={`result-message ${status}`}>
+            <p>{status === 'success' ? '아직 정신이 멀쩡하신데요?' : '음주 코딩이 의심됩니다'}</p>
+            <div className="result-buttons">
+              {status === 'success' && (
+                <button onClick={onClose} className="close-btn">
+                  확인
+                </button>
+              )}
+              {status === 'fail' && (
+                <button onClick={resetGame} className="retry-btn">
+                  재시도
+                </button>
+              )}
+            </div>
+          </div>
+        )}
+        <NoteList notes={notes} />
+        <Piano onKeyPress={handleKeyPress} />
+      </>
     );
   };
 
   return (
     <div className="floating-box">
-      <div className="floating-header">
-        <h2>Piano Captcha</h2>
-      </div>
       <div className="floating-content">
-        {renderResult()}
-        <NoteList notes={notes} />
-        <Piano onKeyPress={handleKeyPress} />
+        {renderContent()}
       </div>
     </div>
   )
