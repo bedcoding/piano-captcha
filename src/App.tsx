@@ -7,12 +7,12 @@ function App() {
 
   // 캡챠 성공 시 처리
   const handleCaptchaSuccess = async () => {
-    console.log('캡챠 통과!');  // 여기서 캡챠 성공 후의 추가 로직을 처리할 수 있습니다
+    console.log('캡챠 통과!');  // 여기서 캡챠 성공 후의 추가 로직을 처리할 수 있음
   };
 
   // 캡챠 실패 시 처리
   const handleCaptchaFail = async () => {
-    console.log('캡챠 실패!');  // 여기서 캡챠 실패 후의 추가 로직을 처리할 수 있습니다
+    console.log('캡챠 실패!');  // 여기서 캡챠 실패 후의 추가 로직을 처리할 수 있음
   };
 
   // 캡챠 닫기 처리
