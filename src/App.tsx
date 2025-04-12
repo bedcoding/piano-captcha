@@ -1,7 +1,25 @@
+import { useState } from 'react'
 import PianoCaptcha from './components/PianoCaptcha'
 import './App.css'
 
 function App() {
+  const [showCaptcha, setShowCaptcha] = useState(true);
+
+  // 캡챠 성공 시 처리
+  const handleCaptchaSuccess = async () => {
+    // 여기서 캡챠 성공 후의 추가 로직을 처리할 수 있습니다
+  };
+
+  // 캡챠 실패 시 처리
+  const handleCaptchaFail = async () => {
+    // 여기서 캡챠 실패 후의 추가 로직을 처리할 수 있습니다
+  };
+
+  // 캡챠 닫기 처리
+  const handleCloseCaptcha = () => {
+    setShowCaptcha(false);
+  };
+
   return (
     <div className="app">
       {/* 임시로 배경이 되는 컨텐츠 */}
@@ -14,10 +32,13 @@ function App() {
       </div>
 
       {/* 피아노 캡챠 */}
-      <PianoCaptcha 
-        onSuccess={() => alert('캡챠 통과!')} 
-        onFail={() => alert('다시 시도해주세요.')} 
-      />
+      {showCaptcha && (
+        <PianoCaptcha 
+          onSuccess={handleCaptchaSuccess}
+          onFail={handleCaptchaFail}
+          onClose={handleCloseCaptcha}
+        />
+      )}
     </div>
   )
 }

@@ -4,13 +4,15 @@ import Piano from './Piano'
 import './PianoCaptcha.css'
 
 interface PianoCaptchaProps {
-  onSuccess?: () => void;  // 캡챠 통과시 호출될 콜백
-  onFail?: () => void;     // 캡챠 실패시 호출될 콜백
+  onSuccess?: () => void | Promise<void>;  // 캡챠 통과시 호출될 콜백
+  onFail?: () => void | Promise<void>;     // 캡챠 실패시 호출될 콜백
+  onClose?: () => void;                    // 캡챠 창 닫기 콜백
 }
 
-export default function PianoCaptcha({ onSuccess, onFail }: PianoCaptchaProps) {
+export default function PianoCaptcha({ onSuccess, onFail, onClose }: PianoCaptchaProps) {
   const [notes, setNotes] = useState<string[]>([])  // 현재까지 입력된 음표들
   const [targetNotes, setTargetNotes] = useState<string[]>([])  // 맞춰야 할 음표들
+  const [status, setStatus] = useState<'playing' | 'success' | 'fail'>('playing')  // 현재 상태
 
   // 새로운 목표 음표를 생성하는 함수
   const generateNewTarget = () => {
@@ -20,31 +22,67 @@ export default function PianoCaptcha({ onSuccess, onFail }: PianoCaptchaProps) {
     setTargetNotes(randomNotes);
   };
 
+  // 게임 초기화 함수
+  const resetGame = () => {
+    setNotes([]);
+    generateNewTarget();
+    setStatus('playing');
+  };
+
   // 컴포넌트가 처음 마운트될 때 목표 음표들을 생성
   useEffect(() => {
     generateNewTarget();
   }, []);
 
-  // 음표가 입력될 때마다 체크
-  useEffect(() => {
-    // 목표 음표가 설정되지 않았거나 아직 입력이 없으면 스킵
-    if (targetNotes.length === 0 || notes.length === 0) return;
-    
-    // 아직 목표 개수만큼 입력하지 않았으면 스킵
-    if (notes.length < targetNotes.length) return;
+  // 건반이 눌렸을 때 처리하는 함수
+  const handleKeyPress = (note: string) => {
+    if (status !== 'playing') return; // 게임이 끝난 상태면 입력 무시
 
-    // 입력된 음표들이 목표와 일치하는지 체크
-    const isCorrect = notes.every((note, index) => note === targetNotes[index]);
+    const newNotes = [...notes, note];
+    setNotes(newNotes);
 
-    if (isCorrect) {
-      onSuccess?.();  // 성공 콜백 호출
-      setNotes([]);   // 입력 초기화
-      generateNewTarget();  // 새로운 목표 음표 생성
-    } else {
-      onFail?.();     // 실패 콜백 호출
-      setNotes([]);   // 입력 초기화
+    // 목표 개수만큼 입력되었을 때 체크
+    if (newNotes.length === targetNotes.length) {
+      const isCorrect = newNotes.every((n, i) => n === targetNotes[i]);
+      
+      if (isCorrect) {
+        setStatus('success');
+        onSuccess?.();
+      } else {
+        setStatus('fail');
+        onFail?.();
+      }
     }
-  }, [notes, targetNotes, onSuccess, onFail]);
+  };
+
+  // 결과 메시지와 버튼 렌더링
+  const renderResult = () => {
+    if (status === 'playing') {
+      return (
+        <div className="target-notes">
+          맞춰야 할 음표: {targetNotes.join(' ')}
+        </div>
+      );
+    }
+
+    return (
+      <div className={`result-message ${status}`}>
+        <p>{status === 'success' ? '캡챠 통과!' : '다시 시도해주세요'}</p>
+        <div className="result-buttons">
+          {status === 'success' && (
+            <button onClick={onClose} className="close-btn">
+              확인
+            </button>
+          )}
+          {status === 'fail' && (
+            <button onClick={resetGame} className="retry-btn">
+              재시도
+            </button>
+          )}
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div className="floating-box">
@@ -52,11 +90,9 @@ export default function PianoCaptcha({ onSuccess, onFail }: PianoCaptchaProps) {
         <h2>Piano Captcha</h2>
       </div>
       <div className="floating-content">
-        <div className="target-notes">
-          맞춰야 할 음표: {targetNotes.join(' ')}
-        </div>
+        {renderResult()}
         <NoteList notes={notes} />
-        <Piano onKeyPress={(note) => setNotes([...notes, note])} />
+        <Piano onKeyPress={handleKeyPress} />
       </div>
     </div>
   )

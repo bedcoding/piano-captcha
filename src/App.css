@@ -11,6 +11,18 @@
   text-align: center;
 }
 
+.background-content h1 {
+  font-size: 2.5em;
+  color: #333;
+  margin-bottom: 0.5em;
+}
+
+.background-content p {
+  font-size: 1.2em;
+  color: #666;
+  margin-bottom: 2em;
+}
+
 /* 플로팅 박스 스타일 */
 .floating-box {
   position: fixed;  /* 화면에 고정 */
