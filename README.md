@@ -22,6 +22,9 @@ Piano Captcha (음주 코딩 방지 피아노 캡챠)
 ## 저장소 주소
 https://github.com/bedcoding/piano-captcha
 
+## 미리보기 ("깃허브 액션이 자동으로 배포한 데모)
+https://bedcoding.github.io/piano-captcha/
+
 ## npm 주소
 https://www.npmjs.com/package/piano-captcha
 
