@@ -17,6 +17,20 @@
       "types": "./dist/index.d.ts"
     }
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bedcoding/piano-captcha.git"
+  },
+  "keywords": [
+    "piano",
+    "captcha",
+    "react",
+    "typescript",
+    "security"
+  ],
+  "runkit": {
+    "example": "examples/basic.js"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
