@@ -17,7 +17,10 @@ const App = () => {
             onClose={()=> setShowCaptcha(false)}
           />
         ) : (
-          <button onClick={() => setShowCaptcha(true)}>
+          <button 
+            onClick={() => setShowCaptcha(true)}
+            style={{ display: 'block', margin: '0 auto' }}
+          >
             다시 테스트하기 🎹
           </button>
         )}
