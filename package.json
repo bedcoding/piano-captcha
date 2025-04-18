@@ -4,7 +4,7 @@
   "version": "1.0.4",
   "type": "module",
   "license": "MIT",
-  "main": "dist/index.umd.js",
+  "main": "dist/index.js",
   "module": "dist/index.es.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -13,10 +13,9 @@
   "exports": {
     ".": {
       "import": "./dist/index.es.js",
-      "require": "./dist/index.umd.js",
+      "require": "./dist/index.js",
       "types": "./dist/index.d.ts"
-    },
-    "./style.css": "./dist/index.css"
+    }
   },
   "repository": {
     "type": "git",

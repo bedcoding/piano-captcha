@@ -2,8 +2,8 @@ import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 import { resolve } from 'path'
 
-// Vite 설정 정의
-export default defineConfig(({ mode }) => ({
+// Vite 설정 정의 (라이브러리 모드)
+export default defineConfig({
   // React 플러그인 활성화
   // - JSX 변환
   // - Fast Refresh (코드 수정 시 자동 새로고침)
@@ -15,7 +15,7 @@ export default defineConfig(({ mode }) => ({
   base: '/piano-captcha/',
   
   // 빌드 설정
-  build: mode === 'lib' ? {
+  build: {
     // 라이브러리 모드 설정 (npm 패키지로 배포하기 위한 설정)
     lib: {
       // 라이브러리의 진입점 파일 지정 (이 파일에서 export한 것들이 라이브러리의 공개 API가 됨)
@@ -56,9 +56,5 @@ export default defineConfig(({ mode }) => ({
 
     // CSS 관련 설정
     cssCodeSplit: false  // cssCodeSplit: false - 모든 CSS를 하나의 파일로 번들링 (이렇게 하면 라이브러리 사용 시 별도의 CSS import가 필요 없음)
-  } : {
-    // 데모 페이지 모드 설정 (GitHub Pages 배포용)
-    outDir: 'dist',
-    emptyOutDir: true
   }
-}))
+})

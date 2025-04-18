@@ -1,4 +1,3 @@
-// @ts-check
 import React from 'react';
 import { PianoCaptcha } from 'piano-captcha';
 import { createRoot } from 'react-dom/client';
