@@ -33,9 +33,11 @@ jobs:
         run: |
           rm -rf node_modules
           rm -f package-lock.json
-          npm install
+          npm install --include=dev
       - name: Build demo page
-        run: vite build --config vite.demo.config.ts
+        run: |
+          npx tsc vite.demo.config.ts --moduleResolution node
+          npx vite build --config vite.demo.config.js
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
