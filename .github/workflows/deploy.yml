@@ -35,7 +35,9 @@ jobs:
           rm -f package-lock.json
           npm install --include=dev
       - name: Build demo page
-        run: npx vite build
+        run: |
+          cd demo
+          npx vite build
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
