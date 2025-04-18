@@ -49,8 +49,12 @@ export default defineConfig({
           react: 'React',           // window.React로 접근
           'react-dom': 'ReactDOM',  // window.ReactDOM으로 접근
           'react/jsx-runtime': 'jsxRuntime'  // window.jsxRuntime으로 접근
-        }
+        },
+        assetFileNames: 'index.css'  // 모든 CSS 파일을 하나로 합쳐서 'index.css'라는 이름으로 출력 (이렇게 하면 라이브러리 사용자가 별도로 CSS를 import 할 필요가 없음)
       }
-    }
+    },
+
+    // CSS 관련 설정
+    cssCodeSplit: false  // cssCodeSplit: false - 모든 CSS를 하나의 파일로 번들링 (이렇게 하면 라이브러리 사용 시 별도의 CSS import가 필요 없음)
   }
 })
