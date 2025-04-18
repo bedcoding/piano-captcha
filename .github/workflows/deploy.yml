@@ -34,8 +34,8 @@ jobs:
           rm -rf node_modules
           rm -f package-lock.json
           npm install
-      - name: Build
-        run: npm run build
+      - name: Build demo page
+        run: npm run build -- --mode demo
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
