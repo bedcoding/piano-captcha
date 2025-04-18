@@ -3,7 +3,7 @@ import NoteList from './NoteList'
 import Piano from './Piano'
 import './PianoCaptcha.css'
 
-interface PianoCaptchaProps {
+export interface PianoCaptchaProps {
   onSuccess?: () => void | Promise<void>;  // 캡챠 통과시 호출될 콜백
   onFail?: () => void | Promise<void>;     // 캡챠 실패시 호출될 콜백
   onClose?: () => void;                    // 캡챠 창 닫기 콜백
