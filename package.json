@@ -7,6 +7,7 @@
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "types": "dist/index.d.ts",
+  "style": "dist/index.css",
   "files": [
     "dist"
   ],
@@ -15,7 +16,8 @@
       "import": "./dist/index.es.js",
       "require": "./dist/index.js",
       "types": "./dist/index.d.ts"
-    }
+    },
+    "./dist/index.css": "./dist/index.css"
   },
   "repository": {
     "type": "git",
