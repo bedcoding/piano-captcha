@@ -31,7 +31,7 @@ https://bedcoding.github.io/piano-captcha/
 https://www.npmjs.com/package/piano-captcha
 
 ## 라이브러리 사용 예시 샘플
-- 예시 코드는 곧 업데이트될 예정입니다.
+https://github.com/bedcoding/piano-captcha-sample.git
 
 ## 체크리스트
 - [x] 개인 저장소 생성
