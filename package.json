@@ -30,9 +30,6 @@
     "typescript",
     "security"
   ],
-  "runkit": {
-    "example": "examples/basic.js"
-  },
   "scripts": {
     "dev": "vite",
     "build": "vite build && tsc",
@@ -40,9 +37,13 @@
     "preview": "vite preview",
     "prepare": "npm run build"
   },
-  "peerDependencies": {
+  "dependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
+  },
+  "peerDependencies": {
+    "react": "^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0 || ^19.0.0"
   },
   "devDependencies": {
     "@types/node": "^22.14.1",
