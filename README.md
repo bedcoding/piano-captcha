@@ -1,8 +1,5 @@
 # Piano Captcha (음주 코딩 방지 피아노 캡챠)
 
-## 프로젝트 이름
-Piano Captcha (음주 코딩 방지 피아노 캡챠)
-
 ## 개요
 1. 음주 상태에서의 코딩을 방지하기 위한 피아노 캡챠 라이브러리입니다.
 화면에 랜덤으로 계이름이 표시되고 (예: "미레 도레 미미미 미레도 레미미"), 사용자가 피아노 건반을 올바른 순서대로 눌러야 통과할 수 있습니다.
@@ -13,25 +10,18 @@ Piano Captcha (음주 코딩 방지 피아노 캡챠)
 3. 각 건반을 누르면 개발자가 직접 녹음한 "도...레...미...파...솔...라...시...도↗↗↗↗↗" 이렇게 음성이 나오며,
 기존 UI에 영향을 주지 않고 독립적으로 동작합니다.
 
-4. 2025년 4월에 개발 완료하는 것을 목표로 하고 있습니다.
+4. 2025년 4월에 개발 완료하는 것을 목표로 하고 있습니다. (회사 다니느라 바빠서 아직 완성 못함)
 
 ## 기술 스택
 - React + TypeScript
+- 순수 CSS
 - Vite
-- 순수 CSS (스타일링 & 애니메이션)
-- Web Audio API (오디오 처리)
 
-## 저장소 주소
-https://github.com/bedcoding/piano-captcha
-
-## 미리보기 (깃허브 액션 배포)
-https://bedcoding.github.io/piano-captcha/
-
-## npm 주소
-https://www.npmjs.com/package/piano-captcha
-
-## 라이브러리 사용 예시 샘플
-https://github.com/bedcoding/piano-captcha-sample.git
+### 🔗 링크 모음
+- **GitHub 저장소**: https://github.com/bedcoding/piano-captcha
+- **데모 사이트**: https://bedcoding.github.io/piano-captcha
+- **npm 패키지**: https://www.npmjs.com/package/piano-captcha
+- **사용 예시 (샘플 프로젝트)**: https://github.com/bedcoding/piano-captcha-sample.git
 
 ## 체크리스트
 - [x] 개인 저장소 생성
@@ -65,9 +55,6 @@ https://github.com/bedcoding/piano-captcha-sample.git
   - [ ] 캡챠 로직 테스트
   - [ ] 오디오 시스템 테스트
 - [x] 사용 예제 프로젝트 추가
-  - [x] 기본 캡챠 예제
-  - [ ] 난이도 설정 예제
-  - [ ] 커스텀 스타일링 예제
 - [x] npm 퍼블리싱
 - [ ] CI 설정
   - [ ] PR 테스트 자동화
