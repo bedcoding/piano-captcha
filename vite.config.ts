@@ -50,12 +50,16 @@ export default defineConfig({
           'react-dom': 'ReactDOM',  // window.ReactDOM으로 접근
           'react/jsx-runtime': 'jsxRuntime'  // window.jsxRuntime으로 접근
         },
+        // CSS import 구문을 자동으로 주입
+        intro: (chunk) => {
+          if (chunk.fileName === "index.js" || chunk.fileName === "index.es.js") {
+            return `import "./index.css";`; // 빌드된 JS에 CSS import 구문 주입
+          }
+          return "";
+        },
         assetFileNames: 'index.css',  // 모든 CSS 파일을 하나로 합쳐서 'index.css'라는 이름으로 출력
         exports: 'named'  // named exports만 사용하도록 설정
       }
     },
-
-    // CSS 관련 설정
-    cssCodeSplit: false  // cssCodeSplit: false - 모든 CSS를 하나의 파일로 번들링
   }
 })
