@@ -77,21 +77,21 @@ export default function PianoCaptcha({ onSuccess, onFail, onClose }: PianoCaptch
             맞춰야 할 음표: {targetNotes.join(' ')}
           </div>
         ) : (
-          <div className={`piano-captcha-result-message ${status}`}>
-            <p>{status === 'success' ? '아직 정신이 멀쩡하신데요?' : '음주 코딩이 의심됩니다'}</p>
-            <div className="piano-captcha-result-buttons">
-              {status === 'success' && (
-                <button onClick={onClose} className="piano-captcha-close-btn">
-                  확인
-                </button>
-              )}
-              {status === 'fail' && (
-                <button onClick={resetGame} className="piano-captcha-retry-btn">
-                  재시도
-                </button>
-              )}
-            </div>
-          </div>
+          <button 
+            className={`piano-captcha-result-message ${status}`}
+            onClick={status === 'success' ? onClose : resetGame}
+          >
+            <p>
+              {status === 'success' 
+                ? '🎉 아직 정신이 멀쩡하신데요?'
+                : '😅 음주 코딩이 의심됩니다'}
+            </p>
+            <p className="piano-captcha-result-hint">
+              {status === 'success' 
+                ? '클릭하여 닫기' 
+                : '클릭하여 재시도'}
+            </p>
+          </button>
         )}
         <NoteList notes={notes} />
         <Piano onKeyPress={handleKeyPress} />
