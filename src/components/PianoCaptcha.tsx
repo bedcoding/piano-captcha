@@ -1,8 +1,7 @@
 import { useState } from 'react'
-import NoteList from './NoteList'
-import Piano from './Piano'
 import InitScreen from './InitScreen'
-import ResultMessage from './ResultMessage'
+import GameScreen from './GameScreen'
+import ResultScreen from './ResultScreen'
 import './PianoCaptcha.css'
 
 export interface PianoCaptchaProps {
@@ -68,26 +67,22 @@ export default function PianoCaptcha({ onSuccess, onFail, onClose }: PianoCaptch
         
         {/* 2. 게임 진행 화면 */}
         {status === 'playing' && (
-          <>
-            <div className="piano-captcha-target-notes">
-              맞춰야 할 음표: {targetNotes.join(' ')}
-            </div>
-            <NoteList notes={notes} />
-            <Piano onKeyPress={handleKeyPress} />
-          </>
+          <GameScreen 
+            targetNotes={targetNotes}
+            notes={notes}
+            onKeyPress={handleKeyPress}
+          />
         )}
 
         {/* 3. 게임 결과 화면 */}
         {(status === 'success' || status === 'fail') && (
-          <>
-            <ResultMessage 
-              status={status}
-              onClose={onClose || (() => {})}
-              onRetry={resetGame}
-            />
-            <NoteList notes={notes} />
-            <Piano onKeyPress={handleKeyPress} />
-          </>
+          <ResultScreen 
+            status={status}
+            notes={notes}
+            onKeyPress={handleKeyPress}
+            onClose={onClose || (() => {})}
+            onRetry={resetGame}
+          />
         )}
       </div>
     </div>
