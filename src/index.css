@@ -4,8 +4,8 @@
  * 이후 vite.config.ts의 rollupOptions.output.intro 설정을 넣자 외부 프로젝트에서 사용할 때 자동으로 CSS import 구문이 주입됐습니다.
  */
 @import './components/PianoCaptcha.css';
-@import './components/Piano.css';
-@import './components/NoteList.css';
-@import './components/InitScreen.css';
-@import './components/ResultMessage.css';
-@import './components/GameScreen.css';
+@import './components/game/Piano.css';
+@import './components/game/NoteList.css';
+@import './components/game/ResultMessage.css';
+@import './components/screens/InitScreen.css';
+@import './components/screens/GameScreen.css';

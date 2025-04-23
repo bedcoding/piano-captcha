@@ -1,5 +1,6 @@
-import NoteList from './NoteList';
-import Piano from './Piano';
+import React from 'react';
+import NoteList from '../game/NoteList';
+import Piano from '../game/Piano';
 import './GameScreen.css';
 
 interface GameScreenProps {

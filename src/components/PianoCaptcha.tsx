@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import InitScreen from './InitScreen'
-import GameScreen from './GameScreen'
-import ResultScreen from './ResultScreen'
+import InitScreen from './screens/InitScreen'
+import GameScreen from './screens/GameScreen'
+import ResultScreen from './screens/ResultScreen'
 import './PianoCaptcha.css'
 
 export interface PianoCaptchaProps {

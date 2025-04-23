@@ -1,6 +1,6 @@
-import NoteList from './NoteList';
-import Piano from './Piano';
-import ResultMessage from './ResultMessage';
+import NoteList from '../game/NoteList';
+import Piano from '../game/Piano';
+import ResultMessage from '../game/ResultMessage';
 
 interface ResultScreenProps {
   status: 'success' | 'fail';
