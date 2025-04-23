@@ -5,4 +5,6 @@
  */
 @import './components/PianoCaptcha.css';
 @import './components/Piano.css';
-@import './components/NoteList.css'; 
+@import './components/NoteList.css';
+@import './components/InitScreen.css';
+@import './components/ResultMessage.css';

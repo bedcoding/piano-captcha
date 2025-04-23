@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import NoteList from './NoteList'
 import Piano from './Piano'
+import InitScreen from './InitScreen'
+import ResultMessage from './ResultMessage'
 import './PianoCaptcha.css'
 
 export interface PianoCaptchaProps {
@@ -56,53 +58,37 @@ export default function PianoCaptcha({ onSuccess, onFail, onClose }: PianoCaptch
     }
   };
 
-  // 결과 메시지와 버튼 렌더링
-  const renderContent = () => {
-    if (status === 'init') {
-      return (
-        <div className="piano-captcha-init-screen">
-          <h2>음주 테스트</h2>
-          <p>화면에 표시되는 음표 순서대로<br />피아노 건반을 눌러주세요</p>
-          <button onClick={startGame} className="piano-captcha-start-btn">
-            시작하기
-          </button>
-        </div>
-      );
-    }
-
-    return (
-      <>
-        {status === 'playing' ? (
-          <div className="piano-captcha-target-notes">
-            맞춰야 할 음표: {targetNotes.join(' ')}
-          </div>
-        ) : (
-          <button 
-            className={`piano-captcha-result-message ${status}`}
-            onClick={status === 'success' ? onClose : resetGame}
-          >
-            <p>
-              {status === 'success' 
-                ? '🎉 아직 정신이 멀쩡하신데요?'
-                : '😅 음주 코딩이 의심됩니다'}
-            </p>
-            <p className="piano-captcha-result-hint">
-              {status === 'success' 
-                ? '클릭하여 닫기' 
-                : '클릭하여 재시도'}
-            </p>
-          </button>
-        )}
-        <NoteList notes={notes} />
-        <Piano onKeyPress={handleKeyPress} />
-      </>
-    );
-  };
-
   return (
     <div className="piano-captcha-floating-box">
       <div className="piano-captcha-floating-content">
-        {renderContent()}
+        {/* 1. 시작 화면 */}
+        {status === 'init' && (
+          <InitScreen onStart={startGame} />
+        )}
+        
+        {/* 2. 게임 진행 화면 */}
+        {status === 'playing' && (
+          <>
+            <div className="piano-captcha-target-notes">
+              맞춰야 할 음표: {targetNotes.join(' ')}
+            </div>
+            <NoteList notes={notes} />
+            <Piano onKeyPress={handleKeyPress} />
+          </>
+        )}
+
+        {/* 3. 게임 결과 화면 */}
+        {(status === 'success' || status === 'fail') && (
+          <>
+            <ResultMessage 
+              status={status}
+              onClose={onClose || (() => {})}
+              onRetry={resetGame}
+            />
+            <NoteList notes={notes} />
+            <Piano onKeyPress={handleKeyPress} />
+          </>
+        )}
       </div>
     </div>
   )

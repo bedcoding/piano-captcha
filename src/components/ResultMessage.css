@@ -1,0 +1,50 @@
+.piano-captcha-result-message {
+  padding: 15px 20px;
+  border-radius: 8px;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+}
+
+.piano-captcha-result-message.success {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  border-color: #4caf50;
+}
+
+.piano-captcha-result-message.fail {
+  background-color: #ffebee;
+  color: #c62828;
+  border-color: #f44336;
+}
+
+.piano-captcha-result-message:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.piano-captcha-result-message:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.piano-captcha-result-message p {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin: 0;
+  color: inherit;
+}
+
+.piano-captcha-result-hint {
+  font-size: 0.9em !important;
+  font-weight: normal !important;
+  margin-top: 8px !important;
+  opacity: 0.8;
+} 
