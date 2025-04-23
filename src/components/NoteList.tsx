@@ -6,10 +6,10 @@ interface NoteListProps {
 
 export default function NoteList({ notes }: NoteListProps) {
   return (
-    <div className="note-list">
-      <div className="note-display">
+    <div className="piano-captcha-note-list">
+      <div className="piano-captcha-note-display">
         {notes.map((note, index) => (
-          <span key={index} className="note">
+          <span key={index} className="piano-captcha-note">
             {note}
           </span>
         ))}

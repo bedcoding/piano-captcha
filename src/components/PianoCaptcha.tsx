@@ -60,10 +60,10 @@ export default function PianoCaptcha({ onSuccess, onFail, onClose }: PianoCaptch
   const renderContent = () => {
     if (status === 'init') {
       return (
-        <div className="init-screen">
+        <div className="piano-captcha-init-screen">
           <h2>음주 테스트</h2>
           <p>화면에 표시되는 음표 순서대로<br />피아노 건반을 눌러주세요</p>
-          <button onClick={startGame} className="start-btn">
+          <button onClick={startGame} className="piano-captcha-start-btn">
             시작하기
           </button>
         </div>
@@ -73,20 +73,20 @@ export default function PianoCaptcha({ onSuccess, onFail, onClose }: PianoCaptch
     return (
       <>
         {status === 'playing' ? (
-          <div className="target-notes">
+          <div className="piano-captcha-target-notes">
             맞춰야 할 음표: {targetNotes.join(' ')}
           </div>
         ) : (
-          <div className={`result-message ${status}`}>
+          <div className={`piano-captcha-result-message ${status}`}>
             <p>{status === 'success' ? '아직 정신이 멀쩡하신데요?' : '음주 코딩이 의심됩니다'}</p>
-            <div className="result-buttons">
+            <div className="piano-captcha-result-buttons">
               {status === 'success' && (
-                <button onClick={onClose} className="close-btn">
+                <button onClick={onClose} className="piano-captcha-close-btn">
                   확인
                 </button>
               )}
               {status === 'fail' && (
-                <button onClick={resetGame} className="retry-btn">
+                <button onClick={resetGame} className="piano-captcha-retry-btn">
                   재시도
                 </button>
               )}
@@ -100,8 +100,8 @@ export default function PianoCaptcha({ onSuccess, onFail, onClose }: PianoCaptch
   };
 
   return (
-    <div className="floating-box">
-      <div className="floating-content">
+    <div className="piano-captcha-floating-box">
+      <div className="piano-captcha-floating-content">
         {renderContent()}
       </div>
     </div>

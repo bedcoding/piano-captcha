@@ -1,64 +1,29 @@
 /* 전체 앱 컨테이너 */
-.app {
+.piano-captcha-app {
   width: 100%;
   min-height: 100vh;
   background-color: #ffffff;
 }
 
 /* 배경 컨텐츠 스타일 */
-.background-content {
+.piano-captcha-background-content {
   padding: 20px;
   text-align: center;
 }
 
-.background-content h1 {
+.piano-captcha-background-content h1 {
   font-size: 2.5em;
   color: #333;
   margin-bottom: 0.5em;
 }
 
-.background-content p {
+.piano-captcha-background-content p {
   font-size: 1.2em;
   color: #666;
   margin-bottom: 2em;
 }
 
-/* 플로팅 박스 스타일 */
-.floating-box {
-  position: fixed;  /* 화면에 고정 */
-  top: 50%;        /* 화면 중앙에 위치 */
-  left: 50%;
-  transform: translate(-50%, -50%);  /* 정중앙 정렬 */
-  width: 400px;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  z-index: 1000;   /* 다른 요소들 위에 표시 */
-}
-
-.floating-header {
-  padding: 16px;
-  background: #f8f9fa;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-  border-bottom: 1px solid #e9ecef;
-}
-
-.floating-header h2 {
-  margin: 0;
-  font-size: 18px;
-  color: #343a40;
-}
-
-.floating-content {
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  align-items: center;
-}
-
-.open-captcha-btn {
+.piano-captcha-open-btn {
   background-color: #4a90e2;
   color: white;
   padding: 12px 24px;
@@ -72,13 +37,13 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.open-captcha-btn:hover {
+.piano-captcha-open-btn:hover {
   background-color: #357abd;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.open-captcha-btn:active {
+.piano-captcha-open-btn:active {
   transform: translateY(0);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }

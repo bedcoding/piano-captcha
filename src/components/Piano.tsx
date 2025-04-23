@@ -8,11 +8,11 @@ export default function Piano({ onKeyPress }: PianoProps) {
   const notes = ['도', '레', '미', '파', '솔', '라', '시', '도'];
   
   return (
-    <div className="piano">
+    <div className="piano-captcha-piano">
       {notes.map((note, index) => (
         <button
           key={index}
-          className="key"
+          className="piano-captcha-key"
           onClick={() => onKeyPress(note)}
         >
           {note}

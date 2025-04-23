@@ -1,4 +1,4 @@
-.note-list {
+.piano-captcha-note-list {
   background: #f8f9fa;
   border-radius: 4px;
   padding: 12px;
@@ -6,7 +6,7 @@
   box-sizing: border-box;
 }
 
-.note-display {
+.piano-captcha-note-display {
   min-height: 40px;
   display: flex;
   flex-wrap: wrap;
@@ -16,7 +16,7 @@
   min-width: 100%;
 }
 
-.note {
+.piano-captcha-note {
   background: #e9ecef;
   padding: 8px 16px;
   border-radius: 4px;

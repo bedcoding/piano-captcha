@@ -26,9 +26,9 @@ function App() {
   };
 
   return (
-    <div className="app">
+    <div className="piano-captcha-app">
       {/* 임시로 배경이 되는 컨텐츠 */}
-      <div className="background-content">
+      <div className="piano-captcha-background-content">
         <h1>이 위에 피아노 캡챠가 뜹니다</h1>
         <p>스크롤을 내려도 피아노 캡챠는 그대로 유지됩니다</p>
         
@@ -36,7 +36,7 @@ function App() {
         {!showCaptcha && (
           <button 
             onClick={handleOpenCaptcha}
-            className="open-captcha-btn"
+            className="piano-captcha-open-btn"
           >
             음주 여부 확인 🎹
           </button>
