@@ -25,7 +25,7 @@
 
 ## 🔗 링크 모음
 - **데모**: https://bedcoding.github.io/piano-captcha
-- **GitHub 저장소**: https://github.com/bedcoding/piano-captcha
+- **GitHub**: https://github.com/bedcoding/piano-captcha
 - **npm 패키지**: https://www.npmjs.com/package/piano-captcha
 - **사용 예시 (샘플 프로젝트)**: https://github.com/bedcoding/piano-captcha-sample.git
 

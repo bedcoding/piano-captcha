@@ -29,7 +29,18 @@ export default function Piano({ onKeyPress }: PianoProps) {
     if (index) {
       // 옥타브에 따라 음성 파일 인덱스 조정
       const adjustedIndex = index + (octave - 1) * 7;
-      const audio = new Audio(`${import.meta.env.BASE_URL || ''}audio/voice${adjustedIndex}.mp3`);
+      const getAudioPath = () => {
+        // 개발 환경 또는 GitHub Pages에서 음악 파일을 가져오는 경우
+        if (import.meta.env.DEV || window.location.hostname.includes('github.io')) {
+          return `${import.meta.env.BASE_URL || ''}audio/voice${adjustedIndex}.mp3`;
+        }
+        
+        // 외부에서 이 프로젝트를 npm 패키지로 설치한 경우
+        const version = process.env.npm_package_version || 'latest';
+        return `https://unpkg.com/piano-captcha@${version}/public/audio/voice${adjustedIndex}.mp3`;
+      };
+
+      const audio = new Audio(getAudioPath());
       audio.play();
     }
   }, []);
