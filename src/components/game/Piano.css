@@ -1,46 +1,57 @@
 .piano-captcha-piano {
+  width: 100%;
+  max-width: 470px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.piano-keys {
+  position: relative;
+  height: 180px;
   display: flex;
-  justify-content: center;
-  gap: 4px;
-  padding: 12px;
-  background: #343a40;
-  border-radius: 4px;
 }
 
 .piano-captcha-key {
-  width: 40px;
-  height: 120px;
-  border: 1px solid #dee2e6;
-  border-radius: 0 0 4px 4px;
-  background: white;
-  color: #343a40;
-  cursor: pointer;
-  font-size: 14px;
-  transition: all 0.1s ease;
-  
-  /* 텍스트 중앙 정렬 */
+  border: 1px solid #000;
   display: flex;
-  align-items: center;     /* 수직 중앙 정렬 */
-  justify-content: center; /* 수평 중앙 정렬 */
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 8px;
+  font-weight: bold;
+  font-size: 0.9em;
 }
 
-.piano-captcha-key.white {
-  background: white;
-  color: #343a40;
+.white-key {
+  background-color: white;
+  flex: 1;
+  height: 100%;
+  margin: 0 0.5px;
+  border-radius: 0 0 3px 3px;
+  min-width: 0;
+  cursor: pointer;
 }
 
-.piano-captcha-key.black {
-  background: #343a40;
-  color: white;
-  height: 80px;
+.white-key:hover {
+  background-color: #f0f0f0;
 }
 
-.piano-captcha-key:hover {
-  background: #f8f9fa;
-  transform: translateY(2px);
+.black-keys {
+  position: absolute;
+  width: 100%;
+  height: 60%;
+  top: 0;
+  pointer-events: none;
 }
 
-.piano-captcha-key:active {
-  background: #e9ecef;
-  transform: translateY(4px);
+.black-key {
+  position: absolute;
+  background-color: #333;
+  width: 8%;
+  height: 100%;
+  border-radius: 0 0 3px 3px;
+  z-index: 1;
+}
+
+.black-key:hover {
+  background-color: #555;
 } 
