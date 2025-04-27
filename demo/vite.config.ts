@@ -6,6 +6,9 @@ export default defineConfig({
   base: '/piano-captcha/',
   build: {
     outDir: '../dist', // 상위 디렉토리의 dist에 빌드
-    emptyOutDir: true
-  }
+    emptyOutDir: true,
+    assetsDir: 'audio',
+    copyPublicDir: true
+  },
+  publicDir: '../public'
 }) 
