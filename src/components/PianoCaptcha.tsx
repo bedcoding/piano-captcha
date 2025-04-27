@@ -43,7 +43,6 @@ export default function PianoCaptcha({
 
   // 게임 초기화 함수
   const handleResetGame = () => {
-    console.log('게임 초기화 attempts :', attempts);
     setNotes([]);
     generateNewTarget();
     setStatus('playing');
@@ -51,7 +50,9 @@ export default function PianoCaptcha({
 
   // 건반이 눌렸을 때 처리하는 함수
   const handleKeyPress = (note: string) => {
-    if (status !== 'playing') return; // 게임이 끝난 상태면 입력 무시
+    if (status !== 'playing') {
+      return;
+    }
 
     const newNotes = [...notes, note];
     setNotes(newNotes);
@@ -66,7 +67,6 @@ export default function PianoCaptcha({
         onSuccess?.();
       } else {
         if (attempts + 1 >= maxAttempts) {
-          console.log('실패 attempts:', attempts);
           setStatus('fail');
           setAttempts(0);
           onFail?.();
