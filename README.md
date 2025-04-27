@@ -1,5 +1,5 @@
 # Piano Captcha (음주 코딩 방지 피아노 캡챠)
-[![npm version](https://badge.fury.io/js/piano-captcha.svg)](https://badge.fury.io/js/piano-captcha)
+[![npm version](https://img.shields.io/npm/v/piano-captcha.svg)](https://www.npmjs.com/package/piano-captcha)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![npm downloads](https://img.shields.io/npm/dm/piano-captcha.svg)](https://www.npmjs.com/package/piano-captcha)
 
