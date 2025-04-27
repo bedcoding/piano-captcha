@@ -15,6 +15,8 @@ const App = () => {
             onSuccess={() => setStatus('✨캡차 통과✨')}
             onFail={() => setStatus('😢캡차 실패😢')}
             onClose={()=> setShowCaptcha(false)}
+            noteCount={3}
+            maxAttempts={3}
           />
         ) : (
           <button 

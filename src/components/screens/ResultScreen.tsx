@@ -11,10 +11,10 @@ interface ResultScreenProps {
 }
 
 export default function ResultScreen({ 
-  status, 
   notes, 
+  status, 
   onKeyPress, 
-  onRetry, 
+  onRetry,
   onClose, 
 }: ResultScreenProps) {
   return (

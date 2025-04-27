@@ -53,6 +53,8 @@ function App() {
           onFail={handleCaptchaFail}
           onSuccess={handleCaptchaSuccess}
           onClose={handleCloseCaptcha}
+          noteCount={3}
+          maxAttempts={3}
         />
       )}
     </div>

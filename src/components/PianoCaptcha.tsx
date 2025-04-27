@@ -8,18 +8,29 @@ export interface PianoCaptchaProps {
   onFail?: () => void;     // 캡챠 실패시 호출될 콜백
   onSuccess?: () => void;  // 캡챠 통과시 호출될 콜백
   onClose?: () => void;    // 캡챠 창 닫기 콜백
+  noteCount?: number;      // 표시될 음계 개수
+  maxAttempts?: number;    // 최대 시도 횟수
 }
 
-export default function PianoCaptcha({ onFail, onSuccess, onClose }: PianoCaptchaProps) {
+export default function PianoCaptcha({ 
+  onFail, 
+  onSuccess, 
+  onClose,
+  noteCount = 3,
+  maxAttempts = 3,
+}: PianoCaptchaProps) {
   const [notes, setNotes] = useState<string[]>([])  // 현재까지 입력된 음표들
   const [targetNotes, setTargetNotes] = useState<string[]>([])  // 맞춰야 할 음표들
   const [status, setStatus] = useState<'init' | 'playing' | 'success' | 'fail'>('init')  // 현재 상태
+  const [attempts, setAttempts] = useState(0)  // 현재 시도 횟수
 
   // 새로운 목표 음표를 생성하는 함수
   const generateNewTarget = () => {
     const notes = ['도', '레', '미', '파', '솔', '라', '시'];
-    const length = 3; // 목표 음표 개수
-    const randomNotes = Array.from({length}, () => notes[Math.floor(Math.random() * notes.length)]);
+    const randomNotes = Array.from(
+      {length: noteCount}, 
+      () => notes[Math.floor(Math.random() * notes.length)]
+    );
     setTargetNotes(randomNotes);
   };
 
@@ -27,10 +38,12 @@ export default function PianoCaptcha({ onFail, onSuccess, onClose }: PianoCaptch
   const startGame = () => {
     generateNewTarget();
     setStatus('playing');
+    setAttempts(0);
   };
 
   // 게임 초기화 함수
   const handleResetGame = () => {
+    console.log('게임 초기화 attempts :', attempts);
     setNotes([]);
     generateNewTarget();
     setStatus('playing');
@@ -49,10 +62,18 @@ export default function PianoCaptcha({ onFail, onSuccess, onClose }: PianoCaptch
       
       if (isCorrect) {
         setStatus('success');
+        setAttempts(0);
         onSuccess?.();
       } else {
-        setStatus('fail');
-        onFail?.();
+        if (attempts + 1 >= maxAttempts) {
+          console.log('실패 attempts:', attempts);
+          setStatus('fail');
+          setAttempts(0);
+          onFail?.();
+        } else {
+          handleResetGame();
+          setAttempts(prev => prev + 1);
+        }
       }
     }
   };
@@ -80,8 +101,10 @@ export default function PianoCaptcha({ onFail, onSuccess, onClose }: PianoCaptch
         {/* 2. 게임 진행 화면 */}
         {status === 'playing' && (
           <GameScreen 
-            targetNotes={targetNotes}
             notes={notes}
+            targetNotes={targetNotes}
+            attempts={attempts}
+            maxAttempts={maxAttempts}
             onKeyPress={handleKeyPress}
           />
         )}
@@ -89,11 +112,11 @@ export default function PianoCaptcha({ onFail, onSuccess, onClose }: PianoCaptch
         {/* 3. 게임 결과 화면 */}
         {(status === 'fail' || status === 'success') && (
           <ResultScreen 
-            status={status}
             notes={notes}
+            status={status}
             onKeyPress={handleKeyPress}
             onRetry={handleResetGame}
-            onClose={handleClose}  // 참고: 넘어오는 onClose는 null일 수도 있어서 handleClose로 한번 감쌈 (타입 에러 방지)
+            onClose={handleClose}
           />
         )}
       </div>

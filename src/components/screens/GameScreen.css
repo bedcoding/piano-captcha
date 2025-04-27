@@ -2,7 +2,7 @@
   background-color: #f5f5f5;
   padding: 15px;
   border-radius: 8px;
-  font-size: 1.2em;
+  font-size: 18px;
   font-weight: bold;
   color: #333;
   text-align: center;
@@ -10,9 +10,16 @@
   width: 100%;
   box-sizing: border-box;
   white-space: nowrap;
+  margin-bottom: 20px;
 }
 
 .piano-captcha-target-notes::before {
   content: '🎵';
   margin-right: 8px;
+}
+
+.piano-captcha-attempts {
+  font-weight: 300;
+  font-size: 14px;
+  color: #666;
 } 

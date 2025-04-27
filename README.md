@@ -1,5 +1,6 @@
 # Piano Captcha (음주 코딩 방지 피아노 캡챠)
 
+
 ## 📝 개요
 1. 음주 상태에서의 코딩을 방지하기 위한 피아노 캡챠 라이브러리입니다.
 화면에 랜덤으로 계이름이 표시되고 (예: "미레 도레 미미미 미레도 레미미"), 사용자가 피아노 건반을 올바른 순서대로 눌러야 통과할 수 있습니다.
@@ -12,10 +13,12 @@
 
 4. 2025년 4월에 개발 완료하는 것을 목표로 하고 있습니다. (회사 다니느라 바빠서 아직 완성 못함)
 
+
 ## 🛠️ 기술 스택
 - React + TypeScript
 - 순수 CSS
 - Vite
+
 
 ## 🔗 링크 모음
 - **데모**: https://bedcoding.github.io/piano-captcha
@@ -23,12 +26,13 @@
 - **npm 패키지**: https://www.npmjs.com/package/piano-captcha
 - **사용 예시 (샘플 프로젝트)**: https://github.com/bedcoding/piano-captcha-sample.git
 
+
 ## ✅ 체크리스트
 - [x] 개인 저장소 생성
 - [x] README.md 파일 작성
   - [x] 프로젝트 개요
-  - [ ] 설치 방법 / 사용 방법
-  - [ ] 예제 코드 및 데모 영상
+  - [x] 설치 방법 / 사용 방법
+  - [x] 예제 코드 및 데모 영상
   - [x] 라이선스 표기
 - [x] 기본 기능 구현
   - [x] 피아노 건반 UI
@@ -38,10 +42,10 @@
     - [x] 랜덤 계이름 생성기
     - [x] 정답 체크 로직
     - [x] 통과/실패 콜백 처리
-  - [ ] 오디오
-    - [ ] 성공/실패 효과음
-    - [ ] 건반 클릭시 피아노 음 재생
-    - [ ] 건반에 들어갈 내 감미로운 목소리 녹음하기
+  - [x] 오디오
+    - [x] 성공/실패 효과음
+    - [x] 건반 클릭시 피아노 음 재생
+    - [x] 건반에 들어갈 내 감미로운 목소리 녹음하기
 - [ ] 확장 기능
   - [ ] 키보드 단축키
     - [ ] 건반 매핑 (A,S,D,F,G,H,J,K)
@@ -57,3 +61,61 @@
 - [x] 사용 예제 프로젝트 개발
 - [x] 깃허브 액션 자동배포
 - [x] npm 퍼블리싱
+
+
+## 설치 방법
+
+```bash
+npm install piano-captcha
+```
+
+
+## 사용 방법
+
+```tsx
+import { PianoCaptcha } from 'piano-captcha';
+
+function App() {
+  return (
+    <PianoCaptcha
+      onSuccess={() => console.log('성공!')}
+      onFail={() => console.log('실패!')}
+      onClose={() => console.log('닫기!')}
+    />
+  );
+}
+```
+
+
+## 음성 파일
+
+피아노 캡차는 다음과 같은 음성 파일을 사용합니다:
+
+| 파일명    | 음계 |
+|-----------|------|
+| voice1.mp3 | 도   |
+| voice2.mp3 | 레   |
+| voice3.mp3 | 미   |
+| voice4.mp3 | 파   |
+| voice5.mp3 | 솔   |
+| voice6.mp3 | 라   |
+| voice7.mp3 | 시   |
+| voice8.mp3 | 도   |
+| voice9.mp3 | 레   |
+| voice10.mp3| 미   |
+
+
+## Props
+
+| Prop      | Type     | Required | Description                          |
+|-----------|----------|----------|--------------------------------------|
+| onSuccess | Function | Yes      | 캡차 성공 시 호출될 콜백 함수        |
+| onFail    | Function | Yes      | 캡차 실패 시 호출될 콜백 함수        |
+| onClose   | Function | No       | 캡차 닫기 시 호출될 콜백 함수        |
+| maxAttempts| Number  | No       | 최대 시도 횟수 (기본값: 3)           |
+| noteCount | Number   | No       | 표시될 음계 개수 (기본값: 3)         |
+
+
+## 라이센스
+
+MIT
