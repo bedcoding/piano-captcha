@@ -29,7 +29,7 @@ export default function Piano({ onKeyPress }: PianoProps) {
     if (index) {
       // 옥타브에 따라 음성 파일 인덱스 조정
       const adjustedIndex = index + (octave - 1) * 7;
-      const audio = new Audio(`${import.meta.env.BASE_URL}audio/voice${adjustedIndex}.mp3`);
+      const audio = new Audio(`${import.meta.env.BASE_URL || ''}audio/voice${adjustedIndex}.mp3`);
       audio.play();
     }
   }, []);
