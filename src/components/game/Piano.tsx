@@ -36,8 +36,15 @@ export default function Piano({ onKeyPress }: PianoProps) {
         }
         
         // 외부에서 이 프로젝트를 npm 패키지로 설치한 경우
-        const version = process.env.npm_package_version || 'latest';
-        return `https://unpkg.com/piano-captcha@${version}/public/audio/voice${adjustedIndex}.mp3`;
+        try {
+          // 환경 변수에서 버전 정보를 가져옴
+          const version = import.meta.env.PACKAGE_VERSION || 'latest';
+          return `https://unpkg.com/piano-captcha@${version}/public/audio/voice${adjustedIndex}.mp3`;
+        } catch (error) {
+          // 오류 발생 시 기본 경로 사용
+          console.warn('Failed to load audio from unpkg, using local path:', error);
+          return `audio/voice${adjustedIndex}.mp3`;
+        }
       };
 
       const audio = new Audio(getAudioPath());

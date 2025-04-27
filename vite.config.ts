@@ -1,6 +1,7 @@
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 import { resolve } from 'path'
+import pkg from './package.json'
 
 // Vite 설정 정의 (라이브러리 모드)
 export default defineConfig({
@@ -13,6 +14,11 @@ export default defineConfig({
   // GitHub Pages 배포를 위한 기본 경로 설정
   // 모든 에셋(이미지, CSS 등)의 기본 URL 경로를 지정
   base: '/piano-captcha/',
+  
+  // 현재 npm 버전 주입 (오디오 파일 경로에 사용)
+  define: {
+    'import.meta.env.PACKAGE_VERSION': JSON.stringify(pkg.version)
+  },
   
   // 빌드 설정
   build: {
