@@ -5,19 +5,19 @@ import './App.css'
 function App() {
   const [showCaptcha, setShowCaptcha] = useState(true);
 
-  // 캡챠 성공 시 처리
-  const handleCaptchaSuccess = async () => {
-    console.log('캡챠 통과!');  // 여기서 캡챠 성공 후의 추가 로직을 처리할 수 있음
-  };
-
   // 캡챠 실패 시 처리
   const handleCaptchaFail = async () => {
     console.log('캡챠 실패!');  // 여기서 캡챠 실패 후의 추가 로직을 처리할 수 있음
   };
 
+  // 캡챠 성공 시 처리
+  const handleCaptchaSuccess = async () => {
+    console.log('캡챠 통과!');  // 여기서 캡챠 성공 후의 추가 로직을 처리할 수 있음
+  };
+
   // 캡챠 닫기 처리
   const handleCloseCaptcha = () => {
-    setShowCaptcha(false);
+    setShowCaptcha(false);  // 여기서 캡챠 닫기 후의 추가 로직을 처리할 수 있음
   };
 
   // 캡챠 열기 처리
@@ -50,8 +50,8 @@ function App() {
       {/* 피아노 캡챠 */}
       {showCaptcha && (
         <PianoCaptcha 
-          onSuccess={handleCaptchaSuccess}
           onFail={handleCaptchaFail}
+          onSuccess={handleCaptchaSuccess}
           onClose={handleCloseCaptcha}
         />
       )}

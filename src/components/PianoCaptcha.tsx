@@ -5,12 +5,12 @@ import ResultScreen from './screens/ResultScreen'
 import './PianoCaptcha.css'
 
 export interface PianoCaptchaProps {
-  onSuccess?: () => void | Promise<void>;  // 캡챠 통과시 호출될 콜백
-  onFail?: () => void | Promise<void>;     // 캡챠 실패시 호출될 콜백
-  onClose?: () => void;                    // 캡챠 창 닫기 콜백
+  onFail?: () => void;     // 캡챠 실패시 호출될 콜백
+  onSuccess?: () => void;  // 캡챠 통과시 호출될 콜백
+  onClose?: () => void;    // 캡챠 창 닫기 콜백
 }
 
-export default function PianoCaptcha({ onSuccess, onFail, onClose }: PianoCaptchaProps) {
+export default function PianoCaptcha({ onFail, onSuccess, onClose }: PianoCaptchaProps) {
   const [notes, setNotes] = useState<string[]>([])  // 현재까지 입력된 음표들
   const [targetNotes, setTargetNotes] = useState<string[]>([])  // 맞춰야 할 음표들
   const [status, setStatus] = useState<'init' | 'playing' | 'success' | 'fail'>('init')  // 현재 상태
@@ -30,7 +30,7 @@ export default function PianoCaptcha({ onSuccess, onFail, onClose }: PianoCaptch
   };
 
   // 게임 초기화 함수
-  const resetGame = () => {
+  const handleResetGame = () => {
     setNotes([]);
     generateNewTarget();
     setStatus('playing');
@@ -57,9 +57,21 @@ export default function PianoCaptcha({ onSuccess, onFail, onClose }: PianoCaptch
     }
   };
 
+  const handleClose = () => {
+    if (onClose) {
+      onClose();
+    }
+  };
+
   return (
     <div className="piano-captcha-floating-box">
       <div className="piano-captcha-floating-content">
+        {onClose && (
+          <button className="piano-captcha-close" onClick={handleClose}>
+            ×
+          </button>
+        )}
+        
         {/* 1. 시작 화면 */}
         {status === 'init' && (
           <InitScreen onStart={startGame} />
@@ -75,13 +87,13 @@ export default function PianoCaptcha({ onSuccess, onFail, onClose }: PianoCaptch
         )}
 
         {/* 3. 게임 결과 화면 */}
-        {(status === 'success' || status === 'fail') && (
+        {(status === 'fail' || status === 'success') && (
           <ResultScreen 
             status={status}
             notes={notes}
             onKeyPress={handleKeyPress}
-            onClose={onClose || (() => {})}
-            onRetry={resetGame}
+            onRetry={handleResetGame}
+            onClose={handleClose}  // 참고: 넘어오는 onClose는 null일 수도 있어서 handleClose로 한번 감쌈 (타입 에러 방지)
           />
         )}
       </div>

@@ -1,28 +1,28 @@
+import ResultMessage from '../game/ResultMessage';
 import NoteList from '../game/NoteList';
 import Piano from '../game/Piano';
-import ResultMessage from '../game/ResultMessage';
 
 interface ResultScreenProps {
-  status: 'success' | 'fail';
+  status: 'fail' | 'success';
   notes: string[];
   onKeyPress: (note: string) => void;
-  onClose: () => void;
   onRetry: () => void;
+  onClose: () => void;
 }
 
 export default function ResultScreen({ 
   status, 
   notes, 
   onKeyPress, 
+  onRetry, 
   onClose, 
-  onRetry 
 }: ResultScreenProps) {
   return (
     <>
       <ResultMessage 
         status={status}
-        onClose={onClose}
         onRetry={onRetry}
+        onClose={onClose}
       />
       <NoteList notes={notes} />
       <Piano onKeyPress={onKeyPress} />
